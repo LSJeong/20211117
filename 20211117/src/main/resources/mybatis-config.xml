@@ -17,5 +17,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="co/lsj/prj/member/service/member-map.xml" />  
+		<mapper resource="co/lsj/prj/notice/service/notice-map.xml" />  
 	</mappers>
 </configuration>

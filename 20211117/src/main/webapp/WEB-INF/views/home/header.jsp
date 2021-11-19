@@ -22,7 +22,7 @@
 				<c:if test="${author eq 'ADMIN' }">
 					<li><a href="memberList.do"> 멤버목록 </a></li>
 				</c:if>
-				<li><a href="#"> 공지사항 </a></li>
+				<li><a href="noticeList.do"> 공지사항 </a></li>
 				<li><a href="#"> 회사소개 </a></li>
 				<c:if test="${not empty id }">
 					<li><a href="#"> 제품소개 </a></li>

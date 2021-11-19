@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.lsj.prj.command.AjaxAuthorUpdate;
 import co.lsj.prj.command.HomeCommand;
 import co.lsj.prj.command.Logout;
 import co.lsj.prj.command.MemberDelete;
@@ -22,6 +23,9 @@ import co.lsj.prj.command.MemberJoinForm;
 import co.lsj.prj.command.MemberList;
 import co.lsj.prj.command.MemberLoginForm;
 import co.lsj.prj.command.MemberUpdate;
+import co.lsj.prj.command.NoticeForm;
+import co.lsj.prj.command.NoticeList;
+import co.lsj.prj.command.NoticeResister;
 import co.lsj.prj.command.memberLogin;
 
 @WebServlet("*.do")
@@ -47,6 +51,10 @@ public class FrontController extends HttpServlet {
 		map.put("/memberUpdate.do", new MemberUpdate()); //회원정보 수정 폼 호출
 		map.put("/memberEditSave.do", new MemberEditSave()); //회원수정 정보 저장
 		map.put("/memberDelete.do", new MemberDelete()); //회원탈퇴
+		map.put("/ajaxAuthorUpdate.do", new AjaxAuthorUpdate()); //회원권한 변경
+		map.put("/noticeform.do", new NoticeForm()); //공지사항 폼 호출
+		map.put("/noticeList.do", new NoticeList()); //공지사항 목록보기
+		map.put("/noticeResister.do", new NoticeResister()); //공지사항 저장
 	}
 
 	

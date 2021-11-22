@@ -35,7 +35,7 @@
 </script>
 <style>
 	th{
-		background-Color: skyblue;
+		background-Color: rgb(252, 218, 252);
 	}
 </style>
 </head>
@@ -54,7 +54,7 @@
 					<th width="100">권한수정</th>
 				</tr>
 				<c:forEach items="${members }" var="member" varStatus="status">
-					<tr onmouseover="this.style.background='#ebf7fd';"
+					<tr onmouseover="this.style.background='rgb(252, 244, 252)';"
 						onmouseleave="this.style.background='#FFFFFF'; ">
 						<td align="center">${member.id }</td>
 						<td align="center">${member.name }</td>

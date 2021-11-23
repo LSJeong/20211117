@@ -16,7 +16,9 @@ a {
 </style>
 <script type="text/javascript">
 	function fileDown() {
-		var ofile = $("#fileName").val();
+		frm.action = "AjaxFiledown";
+		frm.submit();
+		/* var ofile = $("#fileName").val();
 		var pfile = $("#pfileName").val();
 		$.ajax({
 			url : "ajaxfileDownLoad.do",
@@ -30,13 +32,13 @@ a {
 				if (data == 'OK') {
 					alert(ofile + "이 성공적으로 다운되었습니다")
 				}else{
-					alert()
+					alert("다운로드 실패!!!")
 				}
 			},
 			error : function(data) {
 				alert("다운로드 실패!");
 			}
-		})
+		}) */
 	}
 </script>
 
@@ -62,24 +64,22 @@ a {
 				</tr>
 				<tr>
 					<th>내 용</th>
-					<td colspan="3"><textarea rows="6" cols="100"
-							readonly="readonly">
-						${notice.subject }
-					</textarea></td>
+					<td colspan="3"><textarea rows="6" cols="100" readonly="readonly">${notice.subject } </textarea></td>
 				</tr>
 				<tr>
 					<th>첨부파일</th>
-					<td colspan="3"><c:if test="${not empty notice.fileName }">
+					<td colspan="3">
+					<c:if test="${not empty notice.fileName }">
 							<span><img src="img/filedown.png" width="20" height="20">
 								<a href="javascript:void(0);" onclick="fileDown(); return false">${notice.fileName }</a></span>
-						</c:if></td>
+					</c:if></td>
 				</tr>
 			</table>
 		</div>
 		<br>
 
 		<div>
-			<form>
+			<form id="frm" method="post">
 				<!-- Ajax로 처리함 -->
 				<input type="hidden" id="fileName" name="fileName"
 					value="${notice.fileName }"> <input type="hidden"

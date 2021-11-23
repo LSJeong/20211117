@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.lsj.prj.command.AjaxAuthorUpdate;
-import co.lsj.prj.command.AjaxFileDownLoad;
 import co.lsj.prj.command.CommonFileUpload;
 import co.lsj.prj.command.HomeCommand;
 import co.lsj.prj.command.Logout;
@@ -60,7 +59,6 @@ public class FrontController extends HttpServlet {
 //		map.put("/noticeResister.do", new NoticeResister()); //공지사항 저장 cos.jar 사용
 		map.put("/noticeResister.do", new CommonFileUpload()); //공지사항 저장 common-fileupload 사용
 		map.put("/noticeRead.do", new NoticeRead()); //공지사항 상세보기
-		map.put("/ajaxfileDownLoad.do", new AjaxFileDownLoad()); //파일 다운로드
 	}
 
 	
@@ -78,6 +76,7 @@ public class FrontController extends HttpServlet {
 			if(viewPage.startsWith("ajax:")) { //ajax 처리
 				response.setContentType("text/html;charset=UTF-8");
 				response.getWriter().append(viewPage.substring(5));
+				
 				return;
 			}else {
 				viewPage = "WEB-INF/views/" + viewPage + ".jsp";				

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,11 +25,13 @@ public class AjaxFiledown extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doPost(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
 		String fileName = request.getParameter("fileName");
 		String pfileName = request.getParameter("pfileName");
 		
@@ -43,7 +46,6 @@ public class AjaxFiledown extends HttpServlet {
 			
 			fileName = new String(fileName.getBytes("utf-8"),"ISO-8859-1"); //한글 파일명 처리
 			response.setHeader("Content-Disposition", "attachment;filename=" +  fileName);
-			
 			out = response.getOutputStream(); //response 객체로 초기화
 			byte b[] = new byte[(int)file.length()]; //버퍼만들고 파일을 담음
 			int leng = 0;
@@ -52,7 +54,9 @@ public class AjaxFiledown extends HttpServlet {
 			}
 			
 			in.close();  //반드시 닫아 준다
+			out.flush();
 			out.close(); //반드시 닫아 준다
+			request.setAttribute("message", "파일이 성공적으로 다운로드 되었습니다.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
